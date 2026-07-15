@@ -441,6 +441,79 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPracticeAreaPracticeArea
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'practice_areas';
+  info: {
+    displayName: 'Practice Area';
+    pluralName: 'practice-areas';
+    singularName: 'practice-area';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::practice-area.practice-area'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    teachers: Schema.Attribute.Relation<'manyToMany', 'api::teacher.teacher'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    value: Schema.Attribute.String;
+  };
+}
+
+export interface ApiTeacherTeacher extends Struct.CollectionTypeSchema {
+  collectionName: 'teachers';
+  info: {
+    displayName: 'teacher';
+    pluralName: 'teachers';
+    singularName: 'teacher';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bar_admission: Schema.Attribute.Component<'bio.bar-admission', true>;
+    contact: Schema.Attribute.Component<'shared.contact', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    credentials: Schema.Attribute.Component<'bio.credential', true>;
+    education: Schema.Attribute.Component<'bio.education', true>;
+    highlight: Schema.Attribute.Component<'bio.highlight', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::teacher.teacher'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    philosophy_attribution: Schema.Attribute.String;
+    philosophy_quote: Schema.Attribute.Text;
+    portrait: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    practice_areas: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::practice-area.practice-area'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    quote: Schema.Attribute.String;
+    stat: Schema.Attribute.Component<'bio.stat', true>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTestTest extends Struct.SingleTypeSchema {
   collectionName: 'tests';
   info: {
@@ -976,6 +1049,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::practice-area.practice-area': ApiPracticeAreaPracticeArea;
+      'api::teacher.teacher': ApiTeacherTeacher;
       'api::test.test': ApiTestTest;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

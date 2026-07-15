@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_bio_stats",
+  "info": {
+    "displayName": "stat"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    }
+  },
+  "config": {}
+}

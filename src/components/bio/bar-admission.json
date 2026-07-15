@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_bio_bar_admissions",
+  "info": {
+    "displayName": "bar_admission"
+  },
+  "options": {},
+  "attributes": {
+    "jurisdiction": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

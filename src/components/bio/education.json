@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_bio_educations",
+  "info": {
+    "displayName": "education"
+  },
+  "options": {},
+  "attributes": {
+    "school": {
+      "type": "string"
+    },
+    "degree": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

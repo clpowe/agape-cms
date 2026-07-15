@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "teachers",
+  "info": {
+    "singularName": "teacher",
+    "pluralName": "teachers",
+    "displayName": "teacher"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "quote": {
+      "type": "string"
+    },
+    "credentials": {
+      "type": "component",
+      "component": "bio.credential",
+      "repeatable": true
+    },
+    "portrait": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "practice_areas": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::practice-area.practice-area",
+      "mappedBy": "teachers"
+    },
+    "education": {
+      "type": "component",
+      "component": "bio.education",
+      "repeatable": true
+    },
+    "bar_admission": {
+      "type": "component",
+      "component": "bio.bar-admission",
+      "repeatable": true
+    },
+    "highlight": {
+      "type": "component",
+      "component": "bio.highlight",
+      "repeatable": false
+    },
+    "stat": {
+      "type": "component",
+      "component": "bio.stat",
+      "repeatable": true
+    },
+    "contact": {
+      "type": "component",
+      "component": "shared.contact",
+      "repeatable": false
+    },
+    "philosophy_quote": {
+      "type": "text"
+    },
+    "philosophy_attribution": {
+      "type": "string"
+    }
+  }
+}
