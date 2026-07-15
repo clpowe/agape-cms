@@ -35,6 +35,7 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Plugin =>
     config: {
       provider: "aws-s3",
       providerOptions: {
+        baseUrl: env("R2_PUBLIC_URL"),
         s3Options: {
           credentials: {
             accessKeyId: env("R2_ACCESS_KEY_ID"),
