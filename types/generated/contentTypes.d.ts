@@ -483,6 +483,7 @@ export interface ApiTeacherTeacher extends Struct.CollectionTypeSchema {
   };
   attributes: {
     bar_admission: Schema.Attribute.Component<'bio.bar-admission', true>;
+    Bio: Schema.Attribute.Blocks;
     contact: Schema.Attribute.Component<'shared.contact', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

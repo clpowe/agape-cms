@@ -71,6 +71,9 @@
     },
     "philosophy_attribution": {
       "type": "string"
+    },
+    "Bio": {
+      "type": "blocks"
     }
   }
 }
