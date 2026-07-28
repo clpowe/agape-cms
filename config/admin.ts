@@ -9,7 +9,10 @@ const config = ({ env }: Core.Config.Shared.ConfigParams): Core.Config.Admin => 
   },
   transfer: {
     token: {
-      salt: env("TRANSFER_TOKEN_SALT")!,
+      salt: env(
+        "TRANSFER_TOKEN_SALT",
+        "SyrwUrdwXRziBwYMcmD0gNuztyTLxX/5WwKVcDB8RccQAgTLGsjWDBPCiJv5EYrU",
+      )!,
     },
   },
   secrets: {
