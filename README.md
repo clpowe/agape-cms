@@ -1,61 +1,56 @@
-# 🚀 Getting started with Strapi
+# Agape CMS
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+Strapi 5 CMS for the Agape website.
 
-### `develop`
+## Development
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
-npm run develop
-# or
-yarn develop
+```sh
+pnpm install
+pnpm dev
 ```
 
-### `start`
+## Keep local content in sync with production
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+Production is the content source of truth. The project provides a one-way,
+production-to-local sync so local development can start from the same content
+without risking a production overwrite.
 
+1. In the production Strapi admin, open **Settings > Global settings > Transfer
+   Tokens** and create a token with **Pull** permission.
+2. Add the production admin URL and token to your local `.env`:
+
+   ```dotenv
+   STRAPI_TRANSFER_URL=https://your-production-strapi.example.com/admin
+   STRAPI_TRANSFER_TOKEN=your-pull-token
+   ```
+
+3. Stop the local Strapi server, then refresh the local database:
+
+   ```sh
+   pnpm data:pull
+   ```
+
+To pull production content and immediately start development:
+
+```sh
+pnpm dev:sync
 ```
-npm run start
-# or
-yarn start
+
+The pull replaces local content and configuration. Before each pull, the command
+creates a timestamped SQLite backup under `.tmp/backups/`. It never supports the
+opposite direction, so it cannot overwrite production.
+
+Binary media transfer is deliberately excluded because both environments use
+Cloudflare R2. Media records and their public URLs are synchronized as content,
+while the shared R2 objects are left untouched.
+
+This is a startup/on-demand snapshot, not live two-way replication. Make content
+changes in production and run `pnpm data:pull` again when production changes.
+
+## Other commands
+
+```sh
+pnpm build
+pnpm start
+pnpm strapi --help
 ```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>

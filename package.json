@@ -6,8 +6,10 @@
   "scripts": {
     "build": "strapi build",
     "console": "strapi console",
+    "data:pull": "node scripts/pull-production-data.mjs",
     "deploy": "strapi deploy",
     "dev": "strapi develop",
+    "dev:sync": "node scripts/pull-production-data.mjs --start",
     "develop": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
@@ -17,20 +19,20 @@
   "dependencies": {
     "@strapi/plugin-cloud": "5.50.1",
     "@strapi/plugin-users-permissions": "5.50.1",
-    "@strapi/provider-upload-aws-s3": "^5.50.1",
+    "@strapi/provider-upload-aws-s3": "^5.51.0",
     "@strapi/strapi": "5.50.1",
     "better-sqlite3": "12.8.0",
-    "pg": "^8",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "styled-components": "^6.0.0"
+    "pg": "^8.22.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.4",
+    "styled-components": "^6.4.4"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "typescript": "^5"
+    "@types/node": "^20.19.43",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=20.0.0 <=26.x.x",
